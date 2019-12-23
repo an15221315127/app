@@ -11,13 +11,18 @@ import Detail from "../../views/DetailScreen";
 const AppScreen = createStackNavigator({
     Main:{
         screen:BottomTabs,
+
     },
     Detail:{
         screen:Detail,
+
     }
 
 },{
     initialRouteName:'Main',
+    defaultNavigationOptions:{
+        header:null
+    }
 })
 export default AppScreen;
 

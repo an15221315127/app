@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "beeshell": "^2.0.11",
     "mobx": "^5.15.1",
     "mobx-react": "^6.1.4",
     "react": "16.9.0",

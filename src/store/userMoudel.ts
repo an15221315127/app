@@ -1,6 +1,8 @@
-import {observable} from "mobx";
+import {observable} from 'mobx';
 
-
+/**
+ *
+ */
 class User {
    @observable token = "1231413"
    @observable userInfo = {

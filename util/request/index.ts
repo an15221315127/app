@@ -1,15 +1,12 @@
 
 
 const BaseURL = 'https://www.anguodong.com/miniapp/';
-
-
 /**
  * 封装XMLHttpRequest对象作为网络请求·
  * @param url
  * @param method
  * @param data
  */
-
 const api = (url:string,method:string,data:object)=>{
         return new Promise((resolve,reject)=>{
             let request = new XMLHttpRequest();
@@ -29,7 +26,4 @@ const api = (url:string,method:string,data:object)=>{
             request.send(data);
         })
 }
-
-
-
 export default api;

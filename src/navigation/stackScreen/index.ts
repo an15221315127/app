@@ -1,21 +1,25 @@
-import {createStackNavigator} from "react-navigation-stack";
+
+
+import { createStackNavigator } from 'react-navigation-stack';
 
 /**
  * 引入页面组件
  */
-import bottomTabs from "../bottomScreen";
+import BottomTabs from "../bottomScreen";
+import Detail from "../../views/DetailScreen";
 
-const ModalNavigator = createStackNavigator({
-   Main:{
-       screen:bottomTabs,
+const AppScreen = createStackNavigator({
+    Main:{
+        screen:BottomTabs,
+    },
+    Detail:{
+        screen:Detail,
+    }
 
-   }
 },{
     initialRouteName:'Main',
-
 })
-
-export default ModalNavigator;
+export default AppScreen;
 
 
 

@@ -1,25 +1,24 @@
 import {createBottomTabNavigator} from "react-navigation-tabs";
 
-import Home from "../../views/HomeScreen";
+
 import User from "../../views/UserScreen";
+import Home from "../../views/HomeScreen";
 
 
 /**
  *
  * 创建底部导航组件视图
  */
-const bottomTabs = createBottomTabNavigator({
-    Home:{
-        screen:Home,
-    },
-    User:{
-        screen:User
-    }
+const BottomTabs = createBottomTabNavigator({
+        Home:{
+            screen:Home,
+        },
+        User:{
+            screen:User
+        },
 },{
     navigationOptions:{
         header:null
     }
 })
-
-
-export default bottomTabs;
+export default BottomTabs;

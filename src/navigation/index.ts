@@ -1,9 +1,7 @@
-import {createAppContainer} from "react-navigation";
-import ModalNavigator from "./stackScreen";
-
-
+import {createAppContainer} from 'react-navigation';
+import AppScreen from './stackScreen';
 /**
  * 创建根路由
  */
-const RootView = createAppContainer(ModalNavigator);
-export default RootView;
+const RootScreen = createAppContainer(AppScreen);
+export default RootScreen;

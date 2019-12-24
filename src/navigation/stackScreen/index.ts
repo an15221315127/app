@@ -7,11 +7,17 @@ import { createStackNavigator } from 'react-navigation-stack';
  */
 import BottomTabs from "../bottomScreen";
 import Detail from "../../views/DetailScreen";
-
+import Login from "../../views/Login";
+import Register from "../../views/Register";
 const AppScreen = createStackNavigator({
     Main:{
         screen:BottomTabs,
-
+    },
+    Login:{
+      screen:Login
+    },
+    Register:{
+        screen:Register
     },
     Detail:{
         screen:Detail,
@@ -19,9 +25,9 @@ const AppScreen = createStackNavigator({
     }
 
 },{
-    initialRouteName:'Main',
+    initialRouteName:'Login',
     defaultNavigationOptions:{
-        header:null
+        header:null,
     }
 })
 export default AppScreen;

@@ -1,5 +1,6 @@
 import React from "react";
-import { Text, SafeAreaView, ScrollView } from "react-native";
+import { Text, SafeAreaView, ScrollView, Image } from "react-native";
+
 
 
 
@@ -13,4 +14,6 @@ class User extends React.Component<any, any>{
     }
 
 }
+
+
 export default User;

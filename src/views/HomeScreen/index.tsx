@@ -33,7 +33,7 @@ class Home extends React.Component<any, any>{
          * 接口封装 来进行调用login这个接口进行测试
          */
         login({code:666}).then(res=>{
-
+            console.log(res)
         })
     }
     gonext(){

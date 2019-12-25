@@ -49,7 +49,7 @@ class Register extends Component<any, any>{
         const {username,password,phone} = this.state.form;
         const {repassword} = this.state;
         return <SafeAreaView style={styles.Screen}>
-            <Text style={styles.title}>新用户需注册</Text>
+            <Text style={styles.title}>不亦悦乎</Text>
             <Form>
                 <Form.Item label="用户名" hasLine>
                     <Input

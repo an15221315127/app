@@ -1,11 +1,39 @@
 import {StyleSheet} from "react-native";
+import px from "../../../util/size";
 
-
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
     Screen:{
         height:'100%'
-    }
+    },
+    container: {
+        height:px(400),
+        width:px(750),
+        position:'relative'
+    },
+    wrapper: {
+        width: px(750),
+        height:px(400),
+
+    },
+
+    paginationStyle: {
+        bottom: 6,
+    },
+    dotStyle: {
+        width: 22,
+        height: 3,
+        backgroundColor: '#fff',
+        opacity: 0.4,
+        borderRadius: 0,
+    },
+    activeDotStyle: {
+        width: 22,
+        height: 3,
+        backgroundColor: '#fff',
+        borderRadius: 0,
+    },
+
 })
 
 
-export default styles;
+

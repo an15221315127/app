@@ -20,7 +20,9 @@ class Register extends Component<any, any>{
             repassword:'',
         }
     }
-
+    static navigationOptions = {
+        title:'注册'
+    }
 
     private inspect(){
         let {password} = this.state.form;
@@ -39,7 +41,7 @@ class Register extends Component<any, any>{
             // @ts-ignore
             if(0 === res.code){
                 const {navigate} = this.props.navigation;
-                navigate('Main',{title:'你好'})
+                navigate('Main')
             }
         })
     }
@@ -47,7 +49,7 @@ class Register extends Component<any, any>{
         const {username,password,phone} = this.state.form;
         const {repassword} = this.state;
         return <SafeAreaView style={styles.Screen}>
-            <Text style={styles.title}>赶快加入我们把！</Text>
+            <Text style={styles.title}>新用户需注册</Text>
             <Form>
                 <Form.Item label="用户名" hasLine>
                     <Input

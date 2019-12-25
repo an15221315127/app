@@ -1238,6 +1238,22 @@
   resolved "https://registry.npm.taobao.org/@types/prop-types/download/@types/prop-types-15.7.3.tgz?cache=0&sync_timestamp=1572464318358&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fprop-types%2Fdownload%2F%40types%2Fprop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha1-KrDV2i5YFflLC51LldHl8kOrLKc=
 
+"@types/react-native-vector-icons@^6.4.5":
+  version "6.4.5"
+  resolved "https://registry.npm.taobao.org/@types/react-native-vector-icons/download/@types/react-native-vector-icons-6.4.5.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Freact-native-vector-icons%2Fdownload%2F%40types%2Freact-native-vector-icons-6.4.5.tgz#74cbfc564bd8435e43ad6728572a0e5b49c335d1"
+  integrity sha1-dMv8VkvYQ15DrWcoVyoOW0nDNdE=
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
+"@types/react-native@*":
+  version "0.60.26"
+  resolved "https://registry.npm.taobao.org/@types/react-native/download/@types/react-native-0.60.26.tgz#cfbb02c39cd162240d59f4922b5bdeb0c212f90d"
+  integrity sha1-z7sCw5zRYiQNWfSSK1vesMIS+Q0=
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/react" "*"
+
 "@types/react-native@^0.60.25":
   version "0.60.25"
   resolved "https://registry.npm.taobao.org/@types/react-native/download/@types/react-native-0.60.25.tgz#65cb0bf5dd0631079215b63525458e4123c1c90e"
@@ -4317,7 +4333,7 @@ lodash.unescape@4.0.1:
   resolved "https://registry.npm.taobao.org/lodash.unescape/download/lodash.unescape-4.0.1.tgz#bf2249886ce514cda112fae9218cdc065211fc9c"
   integrity sha1-vyJJiGzlFM2hEvrpIYzcBlIR/Jw=
 
-lodash@^4.17.10, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.5, lodash@^4.3.0:
+lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.5, lodash@^4.3.0:
   version "4.17.15"
   resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.15.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Flodash%2Fdownload%2Flodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha1-tEf2ZwoEVbv+7dETku/zMOoJdUg=
@@ -5470,6 +5486,15 @@ react-native-tab-view@^2.11.0:
   version "2.11.0"
   resolved "https://registry.npm.taobao.org/react-native-tab-view/download/react-native-tab-view-2.11.0.tgz#2e57d1f617ccc88c7f452708804f3409f880b700"
   integrity sha1-LlfR9hfMyIx/RScIgE80CfiAtwA=
+
+react-native-vector-icons@^6.6.0:
+  version "6.6.0"
+  resolved "https://registry.npm.taobao.org/react-native-vector-icons/download/react-native-vector-icons-6.6.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-native-vector-icons%2Fdownload%2Freact-native-vector-icons-6.6.0.tgz#66cf004918eb05d90778d64bd42077c1800d481b"
+  integrity sha1-Zs8ASRjrBdkHeNZL1CB3wYANSBs=
+  dependencies:
+    lodash "^4.0.0"
+    prop-types "^15.6.2"
+    yargs "^13.2.2"
 
 react-native@0.61.0:
   version "0.61.0"
@@ -6949,7 +6974,7 @@ yargs@^12.0.5:
     y18n "^3.2.1 || ^4.0.0"
     yargs-parser "^11.1.1"
 
-yargs@^13.3.0:
+yargs@^13.2.2, yargs@^13.3.0:
   version "13.3.0"
   resolved "https://registry.npm.taobao.org/yargs/download/yargs-13.3.0.tgz?cache=0&sync_timestamp=1574137569462&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fyargs%2Fdownload%2Fyargs-13.3.0.tgz#4c657a55e07e5f2cf947f8a366567c04a0dedc83"
   integrity sha1-TGV6VeB+Xyz5R/ijZlZ8BKDe3IM=

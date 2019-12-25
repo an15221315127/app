@@ -6,9 +6,18 @@ import { Form } from 'beeshell/dist/components/Form';
 import { Button } from 'beeshell/dist/components/Button';
 import { Tip } from 'beeshell/dist/components/Tip';
 import {login} from "../../api";
-
+var navigation: any;
 
 class Login extends Component<any, any>{
+
+
+    static navigationOptions = {
+        title:'登陆',
+        headerRight:()=>{
+            return <Text onPress={()=>{navigation.navigate('Register',{title:'login'})}} style={styles.right}>注册</Text>
+        },
+        headerBackTitle:null,
+    }
     constructor(props:any) {
         super(props);
         this.state = {
@@ -17,12 +26,11 @@ class Login extends Component<any, any>{
                 password:'',
             },
         }
+        navigation = props.navigation;
     }
 
 
     private inspect(){
-        let {password} = this.state.form;
-        let {repassword} = this.state;
         let {form} = this.state;
         for (let i in form){
             if(form[i] === ''){
@@ -33,20 +41,19 @@ class Login extends Component<any, any>{
             // @ts-ignore
             if(0 === res.code){
                 const {navigate} = this.props.navigation;
-                navigate('Main',{title:'你好'})
+                navigate('Main',{title:'首页'})
             }
         })
     }
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         const {username,password} = this.state.form;
         return <SafeAreaView style={styles.Screen}>
-            <Text style={styles.title}>欢迎你回家</Text>
+            <Text style={styles.title}>有朋自远方来</Text>
             <Form>
                 <Form.Item label="用户名" hasLine>
                     <Input
                         value={username}
                         maxLength={25}
-                        keyboardType={'default'}
                         autoCapitalize={'none'}
                         placeholder='请输入用户名'
                         onChange={(username) => {

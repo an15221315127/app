@@ -12,6 +12,7 @@ import Register from "../../views/Register";
 const AppScreen = createStackNavigator({
     Main:{
         screen:BottomTabs,
+
     },
     Login:{
       screen:Login
@@ -26,9 +27,7 @@ const AppScreen = createStackNavigator({
 
 },{
     initialRouteName:'Login',
-    defaultNavigationOptions:{
-        header:null,
-    }
+    mode:'card',
 })
 export default AppScreen;
 

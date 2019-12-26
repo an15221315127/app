@@ -32,6 +32,26 @@ export const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 0,
     },
+    list:{
+        width:px(325),
+    },
+    one:{
+        width:px(325),
+        height:px(200),
+
+    },
+    tit:{
+        fontSize:px(40),
+        color:'#8B2500',
+        textAlign:'center',
+        marginTop:px(10),
+    },
+    List:{
+        paddingRight:px(30),
+        paddingLeft:px(30),
+        justifyContent:'space-between',
+        paddingTop:px(50),
+    }
 
 })
 

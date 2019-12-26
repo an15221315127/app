@@ -37,13 +37,14 @@ class Login extends Component<any, any>{
                 return Tip.show(i+'不能为空', 2000)
             }
         }
-        login(form).then(res=>{
-            // @ts-ignore
-            if(0 === res.code){
-                const {replace} = this.props.navigation;
-                replace('Main',{title:'首页'})
-            }
-        })
+        const {replace} = this.props.navigation;
+        replace('Main',{title:'首页'})
+        // login(form).then(res=>{
+        //     // @ts-ignore
+        //     if(0 === res.code){
+        //
+        //     }
+        // })
     }
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         const {username,password} = this.state.form;

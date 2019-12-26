@@ -58,6 +58,7 @@ export const styles = StyleSheet.create({
         paddingLeft: px(30),
         width:px(690),
         display:'flex',
+        marginBottom:px(55),
         justifyContent: 'space-between',
     },
     tabOne:{
@@ -65,7 +66,11 @@ export const styles = StyleSheet.create({
         textAlign: 'center'
     },
     item:{
-        color: '#969696'
+        color: '#969696',
+    },
+    hero_tit:{
+        fontSize: px(50),
+        marginLeft:px(30),
     }
 
 })

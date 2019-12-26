@@ -1,13 +1,12 @@
 
 
-const BaseURL = 'https://www.anguodong.com/miniapp/';
+const BaseURL = 'https://game.gtimg.cn/';
 /**
  * 封装XMLHttpRequest对象作为网络请求·
  * @param url
- * @param method
  * @param data
  */
-const api = (url:string,method:string,data:object)=>{
+const api = (url: string, data: object,method:string)=>{
         return new Promise((resolve,reject)=>{
             let request = new XMLHttpRequest();
             url = BaseURL + url;

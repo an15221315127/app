@@ -1,9 +1,11 @@
 import React,{Component} from 'react';
-import { ImageBackground, SafeAreaView,View,Text ,Image} from 'react-native';
+import { TouchableOpacity, SafeAreaView,View,Text ,Image} from 'react-native';
 import { inject, observer } from "mobx-react";
 import Swiper from 'react-native-swiper';
 import {styles} from "./style";
 import { Longlist,Tab } from 'beeshell';
+import HreoList from "../../assets/hreo";
+
 @inject('user')
 @observer // 使你这个类具有可观察性
 class Home extends Component<any, any>{
@@ -14,64 +16,59 @@ class Home extends Component<any, any>{
         this.state = {
             value:'',
             index:1,
+            oldList:[],
             List:[],
-            type_List:[
+            banner:[],
+            type_List:[ //type：1为战士，2为刺客，3为法师，4为射手5为辅助
                 {
                     value: 1,
-                    label: '上单'
+                    label: '战士'
                 },
                 {
                     value: 2,
-                    label: '中单'
+                    label: '刺客'
                 },
                 {
                     value: 3,
-                    label: 'ADC'
+                    label: '法师'
                 },
                 {
                     value: 4,
-                    label: '辅助'
+                    label: '射手'
                 },
                 {
                     value: 5,
-                    label: '打野'
+                    label: '辅助'
                 }
             ],
         }
     }
     componentDidMount(): void {
-         this.setState({
-             List:[{
-                 id:0,
-                 tit:'死亡之风',
-                 url:require('../../assets/icon/Heros/yasuo.jpeg')
-             },
-                 {
-                     id:1,
-                     tit:'影流之主',
-                     url:require('../../assets/icon/Heros/jie.jpeg')
-                 },
-                 {
-                     id:2,
-                     tit:'至高之拳',
-                     url:require('../../assets/icon/Heros/mangseng.jpeg')
-                 },
-                 {
-                     id:3,
-                     tit:'放逐之刃',
-                     url:require('../../assets/icon/Heros/ruiwen.jpeg')
-                 },
-                 {
-                     id:4,
-                     tit:'沙漠皇帝',
-                     url:require('../../assets/icon/Heros/shahuang.jpeg')
-                 },]
-         })
-
+            this.setState({
+                List:HreoList,
+                oldList:JSON.parse(JSON.stringify(HreoList))
+            })
+    }
+    // 选择
+    private change(item:any,index:number){
+        const {oldList} = this.state;
+        let arr = [];
+        for (let i in oldList){
+            let hero = oldList[i].type
+            for (let j in hero){
+                if(hero[j] == item.value){
+                       arr.push(oldList[i])
+                }
+            }
+        }
+        this.setState({
+            List:arr,
+            index:index+1
+        })
     }
     _longlist:any;
     render(): React.ReactElement<any,string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
-        const {List,type_List,index} = this.state;
+        const {List,oldList,type_List,index} = this.state;
         const {navigate} = this.props.navigation;
         return <SafeAreaView style={styles.Screen}>
             {/*轮播图*/}
@@ -86,8 +83,12 @@ class Home extends Component<any, any>{
                     activeDotStyle={styles.activeDotStyle}
                 >
                     {
-                        List.map((r:any)=>{
-                        return <ImageBackground source={r.url} key={r.id} style={styles.wrapper}></ImageBackground>
+                        oldList.map((r:any,i:number)=>{
+                        return <TouchableOpacity onPress={()=>{
+                            navigate('Detail',{...r})
+                        }} key={i} style={styles.wrapper}>
+                            <Image source={r.url}  style={styles.wrapper} />
+                        </TouchableOpacity>
                     })
                     }
                 </Swiper>
@@ -100,13 +101,13 @@ class Home extends Component<any, any>{
                 scrollable={true}
                 data={type_List}
                 onChange={(item:any,index:number)=>{
-                    this.setState({
-                        index:index+1
-                    })
+                    this.change(item,index);
+
                 }
                 }
 
             />
+            <Text style={styles.hero_tit}>英雄列表</Text>
             {/*列表*/}
             <Longlist
                 ref={(c:any) => {
@@ -119,12 +120,12 @@ class Home extends Component<any, any>{
                 data={List}
                 renderItem={({ item }:any) => {
                     return (
-                        <View onTouchStart={()=>{
+                        <TouchableOpacity onPress={()=>{
                             navigate('Detail',{...item})
                         }} style={styles.list}>
                             <Image style={styles.one} source={item.url}></Image>
                             <Text style={styles.tit}>{item.tit}</Text>
-                        </View>
+                        </TouchableOpacity>
                     )
                 }}
                 onRefresh={()=>{

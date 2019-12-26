@@ -71,6 +71,7 @@ class Home extends Component<any, any>{
                     }
                 </Swiper>
             </View>
+            {/*列表*/}
             <Longlist
                 ref={(c:any) => {
                     this._longlist = c

@@ -51,6 +51,21 @@ export const styles = StyleSheet.create({
         paddingLeft:px(30),
         justifyContent:'space-between',
         paddingTop:px(50),
+    },
+    tabList:{
+        height:px(75),
+        marginTop: px(20),
+        paddingLeft: px(30),
+        width:px(690),
+        display:'flex',
+        justifyContent: 'space-between',
+    },
+    tabOne:{
+        width:px(138),
+        textAlign: 'center'
+    },
+    item:{
+        color: '#969696'
     }
 
 })

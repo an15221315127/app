@@ -3,8 +3,7 @@ import { ImageBackground, SafeAreaView,View,Text ,Image} from 'react-native';
 import { inject, observer } from "mobx-react";
 import Swiper from 'react-native-swiper';
 import {styles} from "./style";
-import { Longlist } from 'beeshell';
-
+import { Longlist,Tab } from 'beeshell';
 @inject('user')
 @observer // 使你这个类具有可观察性
 class Home extends Component<any, any>{
@@ -16,6 +15,28 @@ class Home extends Component<any, any>{
             value:'',
             index:1,
             List:[],
+            type_List:[
+                {
+                    value: 1,
+                    label: '上单'
+                },
+                {
+                    value: 2,
+                    label: '中单'
+                },
+                {
+                    value: 3,
+                    label: 'ADC'
+                },
+                {
+                    value: 4,
+                    label: '辅助'
+                },
+                {
+                    value: 5,
+                    label: '打野'
+                }
+            ],
         }
     }
     componentDidMount(): void {
@@ -50,8 +71,8 @@ class Home extends Component<any, any>{
     }
     _longlist:any;
     render(): React.ReactElement<any,string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
-        const {List} = this.state;
-
+        const {List,type_List,index} = this.state;
+        const {navigate} = this.props.navigation;
         return <SafeAreaView style={styles.Screen}>
             {/*轮播图*/}
             <View style={styles.wrapper}>
@@ -71,6 +92,21 @@ class Home extends Component<any, any>{
                     }
                 </Swiper>
             </View>
+            <Tab
+                style={styles.tabList}
+                dataItemContainerStyle={styles.tabOne}
+                activeColor={'#7A378B'}
+                value={index}
+                scrollable={true}
+                data={type_List}
+                onChange={(item:any,index:number)=>{
+                    this.setState({
+                        index:index+1
+                    })
+                }
+                }
+
+            />
             {/*列表*/}
             <Longlist
                 ref={(c:any) => {
@@ -83,7 +119,9 @@ class Home extends Component<any, any>{
                 data={List}
                 renderItem={({ item }:any) => {
                     return (
-                        <View style={styles.list}>
+                        <View onTouchStart={()=>{
+                            navigate('Detail',{...item})
+                        }} style={styles.list}>
                             <Image style={styles.one} source={item.url}></Image>
                             <Text style={styles.tit}>{item.tit}</Text>
                         </View>
@@ -102,7 +140,6 @@ class Home extends Component<any, any>{
                     })
 
                 }}
-
             />
 
         </SafeAreaView>

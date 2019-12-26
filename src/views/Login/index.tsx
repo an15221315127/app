@@ -40,8 +40,8 @@ class Login extends Component<any, any>{
         login(form).then(res=>{
             // @ts-ignore
             if(0 === res.code){
-                const {navigate} = this.props.navigation;
-                navigate('Main',{title:'首页'})
+                const {replace} = this.props.navigation;
+                replace('Main',{title:'首页'})
             }
         })
     }

@@ -12,7 +12,9 @@ import Register from "../../views/Register";
 const AppScreen = createStackNavigator({
     Main:{
         screen:BottomTabs,
-
+        navigationOptions:{
+            headerBackTitle:'返回'
+        }
     },
     Login:{
       screen:Login
@@ -22,6 +24,12 @@ const AppScreen = createStackNavigator({
     },
     Detail:{
         screen:Detail,
+        navigationOptions:({navigation})=> {
+            const {tit} = navigation.state.params;
+            return {
+                title:tit,
+            }
+        }
 
     }
 

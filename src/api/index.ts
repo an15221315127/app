@@ -1,9 +1,19 @@
-import api from "../../util/request";
+import {post,get} from "../../util/request";
 
 
+/**
+ *
+ * 登陆接口 login
+ * @param data
+ * @return 测试信息
+ */
+export const login = (data:object) => post('index/user/login_post', data);
 
-export const login = (data:object) => api('user/login', data,'post');
+/**
+ *
+ * 登陆接口 login_get
+ * @param data
+ * @return 测试信息
+ */
 
-
-
-export const HreoList = (data:object)=> api('/images/lol/act/img/js/heroList/hero_list.js',data,'get');
+export const login_get = (data:object) => get('index/user/login_get', data);

@@ -5,7 +5,7 @@ import { Input } from 'beeshell/dist/components/Input';
 import { Form } from 'beeshell/dist/components/Form';
 import { Button } from 'beeshell/dist/components/Button';
 import { Tip } from 'beeshell/dist/components/Tip';
-import {login} from "../../api";
+import {login,login_get} from "../../api";
 var navigation: any;
 
 class Login extends Component<any, any>{
@@ -30,21 +30,24 @@ class Login extends Component<any, any>{
     }
 
 
-    private inspect(){
+    private async inspect(){
         let {form} = this.state;
         for (let i in form){
             if(form[i] === ''){
                 return Tip.show(i+'不能为空', 2000)
             }
         }
-        const {replace} = this.props.navigation;
-        replace('Main',{title:'首页'})
-        // login(form).then(res=>{
-        //     // @ts-ignore
-        //     if(0 === res.code){
-        //
-        //     }
+        // const {replace} = this.props.navigation;
+        // replace('Main',{title:'首页'})
+        // const postData = await login(form).then((res:any)=>{
+        //     return res.data
         // })
+        login_get(form).then((res:any)=>{
+            console.log('GET获取到的参数:=',res.data)
+        })
+        // console.log('POST获取到的参数:=',postData)
+
+
     }
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         const {username,password} = this.state.form;

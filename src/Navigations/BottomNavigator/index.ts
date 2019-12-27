@@ -1,27 +1,23 @@
 import {createBottomTabNavigator} from "react-navigation-tabs";
+import {tab} from "../../Components/Tabs";
+
+
 /**
  * 获取页面组件
  */
-
-import User from "../../views/UserScreen";
-import Home from "../../views/HomeScreen";
-/**
- * 引入底部icon
- */
-import userIcon from "../../views/UserScreen/tab";
-import homeIcon from "../../views/HomeScreen/tab";
+import User from "../../Screens/UserScreen";
+import Home from "../../Screens/HomeScreen";
 /**
  *
  * 创建底部导航组件视图
  */
-
 const BottomTabs = createBottomTabNavigator({
         Home:{
             screen:Home,
             navigationOptions:{
                 tabBarLabel:'首页',
                 tabBarIcon:({focused})=>{
-                    return homeIcon(focused)
+                    return tab(focused,require('../../assets/icon/index.png'),require('../../assets/icon/index1.png'));
                 },
 
             }
@@ -31,7 +27,7 @@ const BottomTabs = createBottomTabNavigator({
             navigationOptions:{
                 tabBarLabel:'我的',
                 tabBarIcon:({focused})=>{
-                    return userIcon(focused)
+                    return tab(focused,require('../../assets/icon/user.png'),require('../../assets/icon/user1.png'));
                 }
             }
         },
@@ -47,4 +43,6 @@ const BottomTabs = createBottomTabNavigator({
 
     }
 )
+
+
 export default BottomTabs;

@@ -5,6 +5,12 @@ import Swiper from 'react-native-swiper';
 import {styles} from "./style";
 import { Longlist,Tab } from 'beeshell';
 import HreoList from "../../assets/hreo";
+import typeList from "../../assets/hreo/type";
+
+
+
+
+
 
 @inject('user')
 @observer // 使你这个类具有可观察性
@@ -19,34 +25,14 @@ class Home extends Component<any, any>{
             oldList:[],
             List:[],
             banner:[],
-            type_List:[ //type：1为战士，2为刺客，3为法师，4为射手5为辅助
-                {
-                    value: 1,
-                    label: '战士'
-                },
-                {
-                    value: 2,
-                    label: '刺客'
-                },
-                {
-                    value: 3,
-                    label: '法师'
-                },
-                {
-                    value: 4,
-                    label: '射手'
-                },
-                {
-                    value: 5,
-                    label: '辅助'
-                }
-            ],
+            type_List:[],
         }
     }
     componentDidMount(): void {
             this.setState({
                 List:HreoList,
-                oldList:JSON.parse(JSON.stringify(HreoList))
+                oldList:JSON.parse(JSON.stringify(HreoList)),
+                type_List:typeList
             })
     }
     // 选择

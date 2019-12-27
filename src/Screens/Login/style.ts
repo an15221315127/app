@@ -1,5 +1,5 @@
 import {StyleSheet} from "react-native";
-import px from "../../../util/size";
+import px from "../../util/Proportion";
 
 
 const styles = StyleSheet.create({
@@ -20,6 +20,9 @@ const styles = StyleSheet.create({
         width:px(600),
         borderRadius:px(20),
         marginLeft:px(75)
+    },
+    right:{
+        marginRight:px(40),
     }
 
 })

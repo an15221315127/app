@@ -5,10 +5,15 @@ import { createStackNavigator } from 'react-navigation-stack';
 /**
  * 引入页面组件
  */
-import BottomTabs from "../bottomScreen";
-import Detail from "../../views/DetailScreen";
-import Login from "../../views/Login";
-import Register from "../../views/Register";
+import BottomTabs from "../BottomNavigator";
+import Detail from "../../Screens/DetailScreen";
+import Login from "../../Screens/Login";
+import Register from "../../Screens/Register";
+
+
+/**
+ * 创建根视图组件
+ */
 const AppScreen = createStackNavigator({
     Main:{
         screen:BottomTabs,
@@ -37,6 +42,10 @@ const AppScreen = createStackNavigator({
     initialRouteName:'Login',
     mode:'card',
 })
+
+
+
+
 export default AppScreen;
 
 

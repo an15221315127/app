@@ -36,7 +36,7 @@ const HreoList = [
     {
         id:5,
         type:[4],
-        tit:'德莱文',
+        tit:'荣耀行刑官',
         url:require('../../assets/icon/Heros/delaiwen.jpg')
     },
     {

@@ -1,0 +1,14 @@
+import { Image } from "react-native";
+import px from "../../util/Proportion";
+import React from "react";
+
+/**
+ * 底部icon home组件
+ * @param focus
+ */
+export const tab = (focus:boolean,url:any,acturl:any)=>{
+    if(focus){
+       return <Image style={{width:px(40),height:px(40),paddingTop:px(10)}} source={url}></Image>
+    }
+    return <Image style={{width:px(40),height:px(40),paddingTop:px(10)}} source={acturl}></Image>
+}

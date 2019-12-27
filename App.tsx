@@ -1,8 +1,8 @@
 import React from 'react';
 
-import RootScreen from './src/navigation';
+import RootScreen from './src/Navigations';
 import {Provider} from 'mobx-react';
-import store from "./src/store";
+import store from "./src/Store";
 
 
 class App extends React.Component<any, any>{

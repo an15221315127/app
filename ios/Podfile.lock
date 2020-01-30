@@ -25,6 +25,8 @@ PODS:
     - Folly (= 2018.10.22.00)
     - RCTRequired (= 0.61.0)
     - React-Core (= 0.61.0)
+  - RCTWeChat (1.9.12):
+    - React
   - React (0.61.0):
     - React-Core (= 0.61.0)
     - React-Core/DevSupport (= 0.61.0)
@@ -233,6 +235,7 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
+  - RCTWeChat (from `../node_modules/react-native-wechat`)
   - React (from `../node_modules/react-native/`)
   - React-Core (from `../node_modules/react-native/`)
   - React-Core/DevSupport (from `../node_modules/react-native/`)
@@ -277,6 +280,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/RCTRequired"
   RCTTypeSafety:
     :path: "../node_modules/react-native/Libraries/TypeSafety"
+  RCTWeChat:
+    :path: "../node_modules/react-native-wechat"
   React:
     :path: "../node_modules/react-native/"
   React-Core:
@@ -329,6 +334,7 @@ SPEC CHECKSUMS:
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
   RCTRequired: 1f0d5c0baf372e291f70b6b1275b19142bdce931
   RCTTypeSafety: 3b7329bbb97065c1f6ff7157f8eaf0da60fdc13d
+  RCTWeChat: edb02d76aaf9b2e698e515e3c57bf143a290d9d7
   React: e419a1c0c3afe96300511585756bbea2f9f35e04
   React-Core: 8a505361c3ebe5ad216d52ca5f007a65ef63e5b6
   React-CoreModules: 47a3d75d3afd7089a5d2dd55dab08887ed1afa4c

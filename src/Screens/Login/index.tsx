@@ -57,12 +57,13 @@ class Login extends Component<any, any>{
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         const {username,password} = this.state.form;
         return <SafeAreaView style={styles.Screen}>
-            <Text style={styles.title}>有朋自远方来</Text>
+            <Text style={styles.title}>英雄联盟基友站</Text>
             <Form>
                 <Form.Item label="用户名" hasLine>
                     <Input
                         value={username}
                         maxLength={25}
+                        keyboardType={'default'}
                         autoCapitalize={'none'}
                         placeholder='请输入用户名'
                         onChange={(username) => {

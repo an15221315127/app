@@ -37,8 +37,8 @@ class Register extends Component<any, any>{
             return Tip.show('两次输入的密码不对', 2000)
         }
 
-        login(form).then(res=>{
-            // @ts-ignore
+        login(form).then((res:any)=>{
+
             if(0 === res.code){
                 const {navigate} = this.props.navigation;
                 navigate('Main')

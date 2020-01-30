@@ -1,10 +1,13 @@
+"use strict";
 import { Image } from "react-native";
 import px from "../../util/Proportion";
 import React from "react";
 
 /**
- * 底部icon home组件
+ * 底部tabsIcon
  * @param focus
+ * @param url
+ * @param acturl
  */
 export const tab = (focus:boolean,url:any,acturl:any)=>{
     if(focus){

@@ -1,4 +1,4 @@
-import {post,get} from "../util/XmlHttpRequest";
+import {post} from '../util/http/index'
 
 
 /**

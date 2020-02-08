@@ -10,7 +10,6 @@ import Detail from "../../Screens/DetailScreen";
 import Login from "../../Screens/Login";
 import Register from "../../Screens/Register";
 
-
 /**
  * 创建根视图组件
  */

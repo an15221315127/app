@@ -1,25 +1,25 @@
 import React,{Component} from "react";
 import styles from "./style";
-import {SafeAreaView,Text} from "react-native";
+import { SafeAreaView, Text,AsyncStorage} from 'react-native';
 import { Input } from 'beeshell/dist/components/Input';
 import { Form } from 'beeshell/dist/components/Form';
-import { Button } from 'beeshell/dist/components/Button';
 import { Tip } from 'beeshell/dist/components/Tip';
+import {Button} from 'beeshell/dist/components/Button';
 import {login} from "../../api";
-var navigation: any;
+import {inject,observer} from 'mobx-react';
+var navigate: any;
+import {setItem,getItem} from '../../util/stroage';
 
 
-
-
-
-
+@inject('user')
+@observer // 使你这个类具有可观察性
 class Login extends Component<any, any>{
 
 
     static navigationOptions = {
         title:'登陆',
         headerRight:()=>{
-            return <Text onPress={()=>{navigation.navigate('Register',{title:'login'})}} style={styles.right}>注册</Text>
+            return <Text onPress={()=>{navigate('Register',{title:'login'})}} style={styles.right}>注册</Text>
         },
         headerBackTitle:null,
     }
@@ -30,12 +30,14 @@ class Login extends Component<any, any>{
                 username:'',
                 password:'',
             },
+            time:'2016-03-30'
         }
-        navigation = props.navigation;
+        navigate = props.navigation.navigate;
+
     }
 
 
-    private async inspect(){
+    private  inspect(){
         let {form} = this.state;
         for (let i in form){
             if(form[i] === ''){
@@ -43,17 +45,27 @@ class Login extends Component<any, any>{
             }
         }
 
-        await login(form).then((res:object | unknown)=>{
-            console.log('postData获取到的参数=========',res)
-            const {replace} = this.props.navigation;
-            replace('Main',{title:'首页'})
+         login(form).then((res:any)=>{
+             const {code,data,msg}:any = res;
+             if(code === 1){
+                 Tip.show(msg, 1500)
+                 setItem('user',data);
+                 setTimeout(async ()=>{
+                     const user = await getItem('user');
+                     if (typeof user === 'string') {
+                         console.log( JSON.parse(user));
+                     }
+                 },0)
+                setTimeout(()=>{
+                    const {replace} = this.props.navigation;
+                    this.props.user.setUser(data);
+                    replace('Main',{title:'首页'})
+                },1500)
+             }
+
         })
-
-
-
-
-
     }
+
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         const {username,password} = this.state.form;
         return <SafeAreaView style={styles.Screen}>
@@ -85,7 +97,7 @@ class Login extends Component<any, any>{
                                this.setState({form})
                         }} />
                 </Form.Item>
-                <Button style={styles.button} type={'warning'} onPress={this.inspect.bind(this)}>登陆</Button>
+                <Button  style={styles.button} type={'primary'} onPress={this.inspect.bind(this)}>登陆</Button>
             </Form>
             </SafeAreaView>
 

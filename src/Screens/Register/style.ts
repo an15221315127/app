@@ -1,22 +1,19 @@
 import {StyleSheet} from "react-native";
-import px from "../../util/Proportion";
+import px from "../../util/size";
 
 
 const styles = StyleSheet.create({
+    header:{
+        width:'100%',
+        height:px(418)
+    },
     Screen:{
         height:"100%",
         width:'100%',
         display: 'flex',
     },
-    title:{
-        textAlign:'center',
-        fontSize:px(50),
-        marginTop:px(130),
-        marginBottom:px(100),
-        color:'#CD853F',
-    },
     button:{
-        marginTop: px(250),
+        marginTop: px(150),
         width:px(600),
         borderRadius:px(20),
         marginLeft:px(75)

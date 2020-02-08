@@ -1,5 +1,5 @@
 import {StyleSheet} from "react-native";
-import px from "../../util/Proportion";
+import px from "../../util/size";
 
 export const styles = StyleSheet.create({
     Screen:{

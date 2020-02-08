@@ -1,9 +1,14 @@
 import React from "react";
 import { ImageBackground, SafeAreaView, ScrollView,Text,View } from "react-native";
 import styles from "./style";
-import px from "../../util/Proportion";
+import px from "../../util/size";
 import {Clipboard} from "react-native";
+import {Tip} from 'beeshell/dist/components/Tip';
+import {inject,observer} from 'mobx-react';
 
+
+@inject('user')
+@observer
 class User extends React.Component<any, any>{
 
     constructor(props:any) {
@@ -11,7 +16,7 @@ class User extends React.Component<any, any>{
         this.state = {
             qq:2890815038
         }
-
+        console.log(props.user)
     }
 
     /**
@@ -19,6 +24,7 @@ class User extends React.Component<any, any>{
      */
     private copy(){
         Clipboard.setString(this.state.qq.toString());
+        Tip.show('复制成功')
     }
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         const {qq} = this.state;

@@ -1,7 +1,7 @@
 import React from "react";
 import { ImageBackground, SafeAreaView, ScrollView ,Text} from "react-native";
 import styles from "./style";
-import { Rate ,Dialog,Button} from 'beeshell'
+
 
 /**
  * 详情

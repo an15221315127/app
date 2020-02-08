@@ -34,6 +34,7 @@ class Home extends Component<any, any>{
                 oldList:JSON.parse(JSON.stringify(HreoList)),
                 type_List:typeList
             })
+
     }
     // 选择
     private change(item:any,index:number){

@@ -1,6 +1,6 @@
 import React,{Component} from "react";
 import styles from "./style";
-import { SafeAreaView, Text,AsyncStorage} from 'react-native';
+import { SafeAreaView, Text,} from 'react-native';
 import { Input } from 'beeshell/dist/components/Input';
 import { Form } from 'beeshell/dist/components/Form';
 import { Tip } from 'beeshell/dist/components/Tip';
@@ -8,7 +8,7 @@ import {Button} from 'beeshell/dist/components/Button';
 import {login} from "../../api";
 import {inject,observer} from 'mobx-react';
 var navigate: any;
-import {setItem,getItem} from '../../util/stroage';
+
 
 
 @inject('user')
@@ -49,13 +49,7 @@ class Login extends Component<any, any>{
              const {code,data,msg}:any = res;
              if(code === 1){
                  Tip.show(msg, 1500)
-                 setItem('user',data);
-                 setTimeout(async ()=>{
-                     const user = await getItem('user');
-                     if (typeof user === 'string') {
-                         console.log( JSON.parse(user));
-                     }
-                 },0)
+
                 setTimeout(()=>{
                     const {replace} = this.props.navigation;
                     this.props.user.setUser(data);

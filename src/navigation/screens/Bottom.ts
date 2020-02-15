@@ -1,5 +1,5 @@
 import {createBottomTabNavigator} from "react-navigation-tabs";
-import {tab} from "../../components/tabBar";
+import {tab} from "@/components/tabBar";
 
 
 /**
@@ -7,6 +7,16 @@ import {tab} from "../../components/tabBar";
  */
 import User from "@/views/User";
 import Home from "@/views/Home";
+
+
+const homeIcon = {
+    url:require('../../assets/icon/index.png'),
+    activeUrl:require('../../assets/icon/index1.png')
+}
+const userIcon = {
+    url:require('../../assets/icon/user.png'),
+    activeUrl:require('../../assets/icon/user1.png') ,
+}
 /**
  *
  * 创建底部导航组件视图
@@ -17,8 +27,7 @@ export const BottomTabs = createBottomTabNavigator({
             navigationOptions:{
                 tabBarLabel:'首页',
                 tabBarIcon:({focused})=>{
-                    return tab(focused,require('../../assets/icon/index.png'),
-                        require('../../assets/icon/index1.png'));
+                    return tab(focused,homeIcon.url,homeIcon.activeUrl);
                 },
 
             }
@@ -28,8 +37,7 @@ export const BottomTabs = createBottomTabNavigator({
             navigationOptions:{
                 tabBarLabel:'我的',
                 tabBarIcon:({focused})=>{
-                    return tab(focused,require('../../assets/icon/user.png'),
-                        require('../../assets/icon/user1.png'));
+                    return tab(focused,userIcon.url,userIcon.activeUrl);
                 }
             }
         },

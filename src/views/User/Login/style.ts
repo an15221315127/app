@@ -1,5 +1,5 @@
 import {StyleSheet} from "react-native";
-import px from "../../util/size";
+import px from "@/util/adaptation";
 
 
 const styles = StyleSheet.create({

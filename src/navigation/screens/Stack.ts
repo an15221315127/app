@@ -5,10 +5,10 @@ import { createStackNavigator } from 'react-navigation-stack';
 /**
  * 引入页面组件
  */
-import BottomTabs from "../BottomNavigator";
-import Detail from "../../Screens/DetailScreen";
-import Login from "../../Screens/Login";
-import Register from "../../Screens/Register";
+import {BottomTabs} from "./Bottom";
+import Detail from "@/views/Home/Detail";
+import Login from "@/views/User/Login";
+import Register from "@/views/User/Register";
 
 /**
  * 创建根视图组件

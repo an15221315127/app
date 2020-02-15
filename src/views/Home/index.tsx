@@ -4,8 +4,8 @@ import { inject, observer } from "mobx-react";
 import Swiper from 'react-native-swiper';
 import {styles} from "./style";
 import { Longlist,Tab } from 'beeshell';
-import HreoList from "../../assets/hreo";
-import typeList from "../../assets/hreo/type";
+import HreoList from "@/assets/hreo";
+import typeList from "@/assets/hreo/type";
 
 
 
@@ -28,6 +28,7 @@ class Home extends Component<any, any>{
             type_List:[],
         }
     }
+
     componentDidMount(): void {
             this.setState({
                 List:HreoList,

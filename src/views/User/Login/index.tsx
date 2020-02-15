@@ -5,20 +5,16 @@ import { Input } from 'beeshell/dist/components/Input';
 import { Form } from 'beeshell/dist/components/Form';
 import { Tip } from 'beeshell/dist/components/Tip';
 import {Button} from 'beeshell/dist/components/Button';
-import {login} from "../../api";
+import {login} from "@/api";
 import {inject,observer} from 'mobx-react';
-var navigate: any;
-
-
-
+let _this:any;
 @inject('user')
 @observer // 使你这个类具有可观察性
 class Login extends Component<any, any>{
-
-
     static navigationOptions = {
         title:'登陆',
         headerRight:()=>{
+            const {navigate} = _this.props.navigation;
             return <Text onPress={()=>{navigate('Register',{title:'login'})}} style={styles.right}>注册</Text>
         },
         headerBackTitle:null,
@@ -32,10 +28,8 @@ class Login extends Component<any, any>{
             },
             time:'2016-03-30'
         }
-        navigate = props.navigation.navigate;
-
+        _this = this;
     }
-
 
     private  inspect(){
         let {form} = this.state;
@@ -44,7 +38,6 @@ class Login extends Component<any, any>{
                 return Tip.show(i+'不能为空', 2000)
             }
         }
-
          login(form).then((res:any)=>{
              const {code,data,msg}:any = res;
              if(code === 1){
@@ -98,3 +91,4 @@ class Login extends Component<any, any>{
     }
 }
 export default Login;
+

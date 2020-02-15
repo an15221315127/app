@@ -1,11 +1,11 @@
 import React,{Component} from "react";
 import styles from "./style";
-import {SafeAreaView,Text,ImageBackground} from "react-native";
+import {SafeAreaView,ImageBackground} from "react-native";
 import { Input } from 'beeshell/dist/components/Input';
 import { Form } from 'beeshell/dist/components/Form';
 import { Button } from 'beeshell/dist/components/Button';
 import { Tip } from 'beeshell/dist/components/Tip';
-import {login} from "../../api";
+import {login} from "@/api";
 
 
 class Register extends Component<any, any>{
@@ -49,7 +49,7 @@ class Register extends Component<any, any>{
         const {username,password,phone} = this.state.form;
         const {repassword} = this.state;
         return <SafeAreaView style={styles.Screen}>
-            <ImageBackground style={styles.header} source={require('../../assets/userInformation/timg.jpeg')}/>
+            <ImageBackground style={styles.header} source={require('@/assets/userInformation/timg.jpeg')}/>
 
             <Form>
                 <Form.Item label="用户名" hasLine>

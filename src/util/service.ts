@@ -6,6 +6,7 @@ import axios from 'axios';
 const service = axios.create({
     baseURL: "https://www.anguodong.com", // api 的 base_url
     timeout: 5000, // 请求超时时间
+    withCredentials:true,
     headers:{
         'Accept': 'application/json', // 提交参数的数据方式,这里以json的形式
         'Content-type':'application/json'

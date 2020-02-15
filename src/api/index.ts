@@ -1,4 +1,4 @@
-import {post} from '../util/http/index'
+import {post} from '@/util/service'
 
 
 /**

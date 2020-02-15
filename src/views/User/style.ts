@@ -1,4 +1,4 @@
-import px from "../../util/size";
+import px from "@/util/adaptation";
 import {StyleSheet} from "react-native";
 
 

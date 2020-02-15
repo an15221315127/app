@@ -1,7 +1,7 @@
 import React from "react";
 import { ImageBackground, SafeAreaView, ScrollView,Text,View } from "react-native";
 import styles from "./style";
-import px from "../../util/size";
+import px from "@/util/adaptation";
 import {Clipboard} from "react-native";
 import {Tip} from 'beeshell/dist/components/Tip';
 import {inject,observer} from 'mobx-react';

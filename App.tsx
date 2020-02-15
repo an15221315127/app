@@ -1,8 +1,8 @@
 import React from 'react';
 
-import RootScreen from './src/Navigations';
+import RootScreen from '@/navigation';
 import {Provider} from 'mobx-react';
-import store from "./src/Store";
+import store from "@/store";
 
 import {configure} from 'mobx';
 configure(

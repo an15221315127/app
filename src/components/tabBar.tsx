@@ -1,6 +1,6 @@
 "use strict";
 import { Image } from "react-native";
-import px from "../../util/size";
+import px from "@/util/adaptation";
 import React from "react";
 
 /**

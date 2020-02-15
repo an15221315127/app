@@ -1,7 +1,4 @@
-
-
-
-import user from "./modules/user";
+import {user} from "@/store/modules/user";
 
 /**
  * 创建sotre并且暴露出来

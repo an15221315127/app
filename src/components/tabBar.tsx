@@ -5,7 +5,7 @@ import React from "react";
 import {StyleSheet} from "react-native";
 
 /**
- * 底部栏icon切换
+ * 底部栏icon创建
  * @param focus
  * @param url
  * @param acturl

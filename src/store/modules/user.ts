@@ -1,7 +1,7 @@
 import {observable, computed, action} from 'mobx';
 
 /**
- * 创建user类放置与用户信息有管的一切数据
+ * 用户信息
  */
 class User {
    @observable token = "1231413"
@@ -18,6 +18,5 @@ class User {
      this.userInfo = userInfo;
   }
 }
-const user = new User();
 
-export default user;
+export const user = new User();

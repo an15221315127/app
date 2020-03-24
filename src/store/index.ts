@@ -1,11 +1,8 @@
-import {user} from "@/store/modules/user";
+import user from "./modules/user";
 
 /**
- * 创建sotre并且暴露出来
+ * 将store暴露出去
  */
-const store = {
-    user
+export default {
+    user,
 }
-
-export default store;
-

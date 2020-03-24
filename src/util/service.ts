@@ -1,14 +1,15 @@
 import axios from 'axios';
+import {Tip} from "beeshell/dist/components/Tip";
+import {navigaton} from "@/Screen/Home";
 
-
-
+const baseURL = "https://app.btcming.club/api/"
 // 创建axios实例
 const service = axios.create({
-    baseURL: "https://www.anguodong.com", // api 的 base_url
+    baseURL: baseURL, // api 的 base_url
     timeout: 5000, // 请求超时时间
     withCredentials:true,
     headers:{
-        'Accept': 'application/json', // 提交参数的数据方式,这里以json的形式
+        Accept: 'application/json', // 提交参数的数据方式,这里以json的形式
         'Content-type':'application/json'
     }
 })
@@ -21,7 +22,6 @@ service.interceptors.request.use(
   },
   error => {
       // Do something with request error
-
       Promise.reject(error)
   }
 )
@@ -32,11 +32,28 @@ service.interceptors.response.use(
       /**
        * code为非200是抛错 可结合自己业务进行修改
        */
+
       const res = response.data
+
       if (200 != response.status) {
           return Promise.reject('error')
       } else {
-          return res;
+          // 判断后端返回的code如果不是1说明有异常情况，将提示信息展示出来就好
+          switch (res.code) {
+              case 1:
+                  return res;
+              case -1:
+                  Tip.show(res.msg)
+                  setTimeout(()=>{
+                      navigaton.navigate("Login")
+                  },1500)
+                  return Promise.reject('error')
+              default:
+                  Tip.show(res.msg)
+                  return Promise.reject('error')
+
+          }
+
       }
   },
   error => {

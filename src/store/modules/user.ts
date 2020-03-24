@@ -19,4 +19,4 @@ class User {
   }
 }
 
-export const user = new User();
+export default new User();

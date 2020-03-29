@@ -1,7 +1,6 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import {applicationList} from '@/Screen/Home/list';
 /**
  * 引入页面组件
  */

@@ -6,7 +6,6 @@ import {
   ScrollView,
   ImageBackground,
   KeyboardAvoidingView,
-  TouchableNativeFeedback,
   TouchableOpacity,
 } from 'react-native';
 import {inject, observer} from 'mobx-react';
@@ -109,7 +108,7 @@ export default class Photo extends React.Component<any, any> {
     const {ImageList, avatar, currentBackgroundImage, isShow} = this.state;
 
     return (
-      <ScrollView
+      <View
         style={styles.container}
         onTouchStart={this.toucnStart.bind(this)}
         onTouchEnd={this.touchEnd.bind(this)}>
@@ -326,7 +325,7 @@ export default class Photo extends React.Component<any, any> {
             </View>
           </ImageBackground>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }

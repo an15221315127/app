@@ -6,10 +6,10 @@
  * @returns {boolean} - 返回判断结果
  */
 export function emailCheck(email: string): boolean {
-    const emailReg: any = /^([a-zA-Z0-9]+[_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-    if (!emailReg.test(email)) {
-        return false;
-    } else {
-        return true;
-    }
+  const emailReg: any = /^([a-zA-Z0-9]+[_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+  if (!emailReg.test(email)) {
+    return false;
+  } else {
+    return true;
+  }
 }

@@ -1,4 +1,4 @@
-import { Dimensions, Platform, PixelRatio } from 'react-native';
+import {Dimensions, Platform, PixelRatio} from 'react-native';
 
 const deviceWidth = Dimensions.get('window').width;
 
@@ -7,9 +7,9 @@ const deviceWidth = Dimensions.get('window').width;
  * @param size
  * @return 当前窗口于设计图的比例缩放后的真实尺寸
  */
-export default function px(size:number) {
-    if (PixelRatio.get() >= 3 && Platform.OS === 'ios' && 1 === size) {
-        return size;
-    }
-    return deviceWidth / 750 * size;
+export default function px(size: number) {
+  if (PixelRatio.get() >= 3 && Platform.OS === 'ios' && size === 1) {
+    return size;
+  }
+  return (deviceWidth / 750) * size;
 }

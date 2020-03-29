@@ -1,178 +1,350 @@
-import React,{Component} from 'react';
-import { TouchableOpacity, SafeAreaView,View,Text ,Image,ImageBackground} from 'react-native';
-import { inject, observer } from "mobx-react";
-import Swiper from 'react-native-swiper';
-import {style} from "./style";
-import {Index} from "@/api";
-import px from "@/util/adaptation";
-import {Longlist} from "beeshell/dist/components/Longlist";
-export let navigaton:any; // 初始化一个导航器，用于外部导航使用
+import React, {Component} from 'react';
+import {
+  AsyncStorage,
+  Image,
+  ImageBackground,
+  SafeAreaView,
+  Text,
+  TouchableHighlight,
+  View,
+} from 'react-native';
+import {Longlist} from 'beeshell';
+import px from '@/util/adaptation';
+import {Avatar} from 'react-native-elements';
+import {Input} from 'beeshell/dist/components/Input';
+import styles from './style';
+import {applicationList} from '@/Screen/Home/list';
+import {inject, observer} from 'mobx-react';
+
+export var navigaton: any; // 初始化一个导航器，用于外部导航使用
 @inject('user')
 @observer // 使你这个类具有可观察性
-class Home extends Component<any, any>{
-    constructor(props:any) {
-        super(props);
-        this.state = {
-            banner:[],// banner图
-            coin:[], // 各类币种信息
-            index:1,// 轮播图起始下标
-            lineList:[],// 当前电力数组
-        }
-        navigaton = props.navigation
+export default class Home extends Component<any, any> {
+  state = {
+    avatar:
+      'https://wx.qlogo.cn/mmopen/vi_32/PiajxSqBRaEJIsvPcVfz6HIAhruSRRTvouSUUiakLX8KbDH2PHzOb0J5zt3852KRy1kdIeJGFp8icfgsOkXKq14xg/132',
+    applicationList: [],
+    appList2: [
+      {
+        backgroundImage: require('@/assets/home/jokes.png'),
+        state: 0,
+        like: 0,
+        name: '小段子',
+        message: '隔壁的整蛊专家',
+      },
+      {
+        backgroundImage: require('@/assets/home/test.png'),
+        state: 0,
+        like: 0,
+        name: '小测试',
+        message: '今日[双鱼座]',
+      },
+    ],
+    isshowController: false,
+    currentName: '',
+    startIndex: 0,
+  };
+  confrim() {
+    this.setState({
+      isshowController: false,
+    });
+    const {startIndex, applicationList} = this.state;
+    const {screen} = applicationList[startIndex];
+    if (screen){
+        AsyncStorage.setItem('showFirstScreen', screen);
     }
+    AsyncStorage.setItem('startIndex', String(startIndex));
+  }
+  constructor(props: any) {
+    super(props);
+    AsyncStorage.getItem('startIndex').then(res => {
+      this.setState({
+        startIndex: Number(res),
+      });
+    });
+  }
+  componentDidMount(): void {
+    this.setState({
+      applicationList: applicationList,
+    });
+  }
 
-    componentDidMount(): void {
-        Index().then((res:any)=>{
-            const {data} = res;
-            const {banner,coin} = data;
-            coin.forEach((r:any)=>{
-                if(r.quote.percent_change_24h > 0){ // 拼接数据
-                    r.color = '#FB5144'
-                    r.bol = '+' + r.quote.percent_change_24h
-                }else {
-                    r.color = '#38D158'
-                    r.bol =  r.quote.percent_change_24h
-                }
-            })
-            this.setState({
-                banner,
-                coin,
-            })
-        }).catch(err=>{
-            console.log(JSON.stringify(err))
-        })
-
+  changeMainBackground(item: any, index: number) {
+    if (this.state.isshowController) {
+      this.setState({
+        currentName: item.name,
+        startIndex: index,
+      });
+    } else {
+      if (item.screen) {
+        this.props.navigation.navigate(item.screen);
+      }
     }
-    _longlist:any
-    render(): React.ReactElement<any,string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
-        const {banner,coin,index,lineList} = this.state;
-        return <View style={style.Screen}>
-            <SafeAreaView style={style.Screen}>
-                {/*头部*/}
-                <View style={style.header}>
-                    <ImageBackground style={style.Electricity} source={require('@/assets/images/Electricity/Battery.png')} >
-                        {
-                            lineList.map((item:any)=>{
-                                <View style={item.name}></View>
-                            })
-                        }
-                    </ImageBackground>
-                    <Text style={style.text}>Surplus electricity:</Text>
-                    <Text style={style.text2}>100 kw·h</Text>
-                </View>
-                {/*轮播图*/}
-                <View style={style.container}>
-                    <Swiper
-                        removeClippedSubviews={false} //这个很主要啊，解决白屏问题
-                        autoplay={true}
-                        index={index}
-                        paginationStyle={style.paginationStyle}
-                        dotStyle={style.dotStyle}
-                        activeDotStyle={style.activeDotStyle}
-                        onIndexChanged={(index:number)=>{
-                            this.setState({
-                                index
-                            })
-                        }}
-                    >
-                        {
-                            banner.map((r:any,i:number)=>{
-                                return <TouchableOpacity onPress={()=>{
-                                    // navigate('Detail',{...r})
-                                }} key={i} style={style.wrapper}>
-                                    <Image source={{uri:r.img}}  style={style.wrapper} />
-                                </TouchableOpacity>
-                            })
-                        }
-                    </Swiper>
-                </View>
-                {/*分类栏*/}
-                <View style={style.navView}>
-                    <TouchableOpacity>
-                        <ImageBackground  style={style.nav} source={require('@/assets/images/home/nav1.png')}>
-                            <Text style={style.nav_tit}>
-                                Hashpower market
-                            </Text>
-                        </ImageBackground>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <ImageBackground style={style.nav} source={require('@/assets/images/home/nav2.png')}>
-                            <Text style={style.nav_tit}>
-                                Hashpower
-                                renting
-                            </Text>
-                        </ImageBackground>
-                    </TouchableOpacity>
-                </View>
-                <View style={style.navView}>
-                    <TouchableOpacity>
-                        <ImageBackground style={style.nav} source={require('@/assets/images/home/tab3.png')}>
-                            <Text style={style.nav_tit}>
-                                Hashpower
-                                market
-                            </Text>
-                        </ImageBackground>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <ImageBackground style={style.nav} source={require('@/assets/images/home/tab4.png')}>
-                            <Text style={style.nav_tit}>
-                                Hashpower
-                                renting
-                            </Text>
-                        </ImageBackground>
-                    </TouchableOpacity>
+  }
 
-                </View>
-                <TouchableOpacity>
-                    <ImageBackground style={style.bottom} source={require('@/assets/images/home/nav3.png')}>
-                        <Text style={style.nav_tit}>Miner Products</Text>
-                        <Text style={style.nav_mess}>
-                            There is a discount for group purchase
-                            of mining machines
-                        </Text>
-                    </ImageBackground>
-                </TouchableOpacity>
-                <View style={style.navView}>
-                    <View style={style.line}/>
-                    <Text style={style.title}>Markets</Text>
-                </View>
-                <View style={{...style.navView,justifyContent:'space-between',paddingRight:px(30),marginTop:px(34),borderBottomColor:'#E4E4E4',borderBottomWidth:px(2),paddingBottom:px(15)}}>
-                    <Text style={style.td}>Name</Text>
-                    <Text style={style.td}>Price</Text>
-                    <Text style={style.td}>Change%</Text>
-                </View>
-                {/*长数据显示*/}
-                <Longlist
-                    ref={(c) => {
-                        this._longlist = c
-                    }}
-                    total={coin.length}
-                    data={coin}
-                    renderItem={({ item, index }) => {
-                        return (
-                            <View style={{...style.longList,...style.border}}>
-                                <View style={{...style.longList,...style.item}}>
-                                    <Image style={style.icon} source={{uri:item.icon}}></Image>
-                                    <View >
-                                        <Text style={{...style.text1,marginBottom:px(8)}}>{item.symbol} <Text style={style.small}>/ USD</Text></Text>
-                                        <Text style={style.small}>24H Volume</Text>
-                                    </View>
-                                </View>
-                                <View style={style.item}>
-                                    <Text style={{...style.text1,marginBottom:px(9)}}>{item.quote.price.toFixed(4)}</Text>
-                                    <Text style={{fontSize:px(22)}}>{item.quote.volume_24h.toFixed(4)}</Text>
-                                </View>
-                                <Text style={{...style.btn,backgroundColor:item.color}}>{item.bol}%</Text>
-                            </View>
+  showController() {
+    const {applicationList, startIndex} = this.state;
+    this.setState({
+      // @ts-ignore
+      currentName: applicationList[startIndex].name,
+      isshowController: true,
+    });
+  }
+  onEndReached() {
+    return new Promise((resolve: any) => {
+      setTimeout(() => {
+        this.setState({
+          applicationList: [...this.state.applicationList, ...applicationList],
+        });
+        resolve();
+      }, 1000);
+    });
+  }
+  onRefresh() {
+    return new Promise((resolve: any) => {
+      this.setState({
+        applicationList: [],
+      });
+      setTimeout(() => {
+        this.setState({
+          applicationList: [...applicationList, ...applicationList],
+        });
+        resolve();
+      }, 1000);
+    });
+  }
+  _longlist: any;
+  render():
+    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+    | string
+    | number
+    | {}
+    | React.ReactNodeArray
+    | React.ReactPortal
+    | boolean
+    | null
+    | undefined {
+    const {
+      avatar,
+      applicationList,
+      appList2,
+      isshowController,
+      currentName,
+      startIndex,
+    } = this.state;
 
-                        )
-                    }}
-                    onEndReached={() => {}}
-                    onRefresh={() => {}}
-                />
-            </SafeAreaView>
+    return (
+      <SafeAreaView style={styles.screen}>
+        <View>
+          <Input
+            style={styles.headerSearch}
+            textAlign="center"
+            placeholder={'搜一搜'}
+          />
         </View>
-    }
-}
 
-export default Home;
+        <View style={styles.plate}>
+          <ImageBackground style={styles.plateItem} source={{uri: avatar}}>
+            <Avatar
+              containerStyle={{marginLeft: px(52), marginTop: 15}}
+              size={px(120)}
+              rounded
+              source={{uri: avatar}}
+            />
+            <Text style={styles.plateText}>资料</Text>
+          </ImageBackground>
+          <ImageBackground
+            style={styles.plateItem}
+            source={require('@/assets/home/plate2.png')}>
+            <Image
+              style={{
+                marginLeft: px(52),
+                marginTop: 15,
+                backgroundColor: 'transparent',
+                width: px(120),
+                height: px(120),
+              }}
+              source={require('@/assets/home/plate2_icon.png')}
+            />
+            <Text style={styles.plateText}>互动</Text>
+          </ImageBackground>
+          <ImageBackground
+            style={styles.plateItem}
+            source={require('@/assets/home/plate3.png')}>
+            <Image
+              style={{
+                marginLeft: px(52),
+                marginTop: 15,
+                backgroundColor: 'transparent',
+                width: px(120),
+                height: px(120),
+              }}
+              source={require('@/assets/home/plate3_icon.png')}
+            />
+            <Text style={styles.plateText}>官方</Text>
+          </ImageBackground>
+        </View>
+        {isshowController && (
+          <View style={styles.status}>
+            <Text style={{...styles.statusText, ...styles.first}}>
+              主页显示
+            </Text>
+            <Text style={{...styles.statusText, ...styles.second}}>
+              {currentName}
+            </Text>
+            <Text
+              // @ts-ignore
+              onPress={this.changeMainBackground.bind(this)}
+              style={{...styles.statusText, ...styles.third}}>
+              更换
+            </Text>
+            <Text
+              style={{
+                ...styles.statusText2,
+                marginLeft: px(79),
+                marginRight: px(33),
+              }}>
+              将
+              <Text style={{...styles.statusText2, color: '#27B2F3'}}>
+                {currentName}
+              </Text>
+              钉在主页
+            </Text>
+            <Text
+              onPress={() => this.confrim()}
+              style={{
+                ...styles.statusText,
+                color: '#00D623',
+                marginRight: px(8),
+              }}>
+              确认
+            </Text>
+            <Text style={{...styles.statusText}}>|</Text>
+            <Text
+              onPress={() =>
+                this.setState({
+                  isshowController: false,
+                })
+              }
+              style={{
+                ...styles.statusText,
+                color: '#8E8E8E',
+                marginLeft: px(8),
+              }}>
+              取消
+            </Text>
+          </View>
+        )}
+        <Image
+          style={{
+            width: px(24),
+            height: px(24),
+            marginLeft: px(30),
+            marginBottom: px(14),
+            marginTop: px(14),
+          }}
+          source={require('@/assets/home/star.png')}
+        />
+        {/*功能模块展示*/}
+        <Longlist
+          columnWrapperStyle={styles.appList}
+          numColumns={2}
+          initialNumToRender={10}
+          refreshing={true}
+          renderFooter={(loading: boolean) => {
+            return (
+              <Text
+                style={{
+                  color: '#FFFFFF',
+                  fontSize: px(32),
+                  textAlign: 'center',
+                }}>
+                {loading ? '正在加载' : '暂无更多'}
+              </Text>
+            );
+          }}
+          ref={(c: any) => {
+            this._longlist = c;
+          }}
+          onEndReachedThreshold={100}
+          total={24}
+          data={applicationList}
+          onEndReached={() => this.onEndReached()}
+          onRefresh={() => this.onRefresh()}
+          renderItem={({item, index}: any) => {
+            return (
+              <TouchableHighlight
+                key={index}
+                onPress={() => this.changeMainBackground(item, index)}
+                onLongPress={this.showController.bind(this)}>
+                <ImageBackground
+                  style={styles.application}
+                  source={item.backgroundImage}
+                  key={index}>
+                  {item.name && <Text style={styles.appText}>{item.name}</Text>}
+                  {item.message && (
+                    <Text style={styles.appMessage}>{item.message}</Text>
+                  )}
+                  <Image
+                    style={styles.star}
+                    source={
+                      item.like == 1
+                        ? require('@/assets/home/star.png')
+                        : require('@/assets/home/star2.png')
+                    }
+                  />
+                  {isshowController && index == startIndex && (
+                    <Image
+                      style={styles.select}
+                      source={require('@/assets/home/gou.png')}
+                    />
+                  )}
+                </ImageBackground>
+              </TouchableHighlight>
+            );
+          }}
+        />
+        <Image
+          style={{
+            width: px(14),
+            height: px(19),
+            marginLeft: px(30),
+            marginTop: px(14),
+            marginBottom: px(14),
+          }}
+          source={require('@/assets/home/close.png')}
+        />
+        {/*功能模块展示*/}
+        <View style={styles.appList}>
+          {appList2.map((item: any, index: number) => {
+            return (
+              <ImageBackground
+                style={styles.application}
+                source={item.backgroundImage}
+                key={index}>
+                {item.name && <Text style={styles.appText}>{item.name}</Text>}
+                {item.message && (
+                  <Text style={styles.appMessage}>{item.message}</Text>
+                )}
+                <Image
+                  style={styles.star}
+                  source={
+                    item.like == 1
+                      ? require('@/assets/home/star.png')
+                      : require('@/assets/home/star2.png')
+                  }
+                />
+                {item.state == 1 && (
+                  <Image
+                    style={styles.select}
+                    source={require('@/assets/home/gou.png')}
+                  />
+                )}
+              </ImageBackground>
+            );
+          })}
+        </View>
+      </SafeAreaView>
+    );
+  }
+}

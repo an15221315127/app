@@ -1,155 +1,110 @@
-import {StyleSheet} from "react-native";
-import px from "@/util/adaptation";
-export const style = StyleSheet.create({
-    Screen:{
-        height:'100%',
-        width:'100%'
-    },
-    header:{
-        width:px(690),
-        marginLeft: px(30),
-        marginBottom: px(30),
-        display:'flex',
-        alignItems:'center',
-        flexDirection:'row',
-    },
-    container: {
-        height:px(256),
-        width:px(690),
-        marginLeft:px(30),
-        marginRight:px(30)
-    },
-    wrapper: {
-        width:px(690),
-        height:px(256),
-    },
-
-    paginationStyle: {
-        bottom: 6,
-    },
-    dotStyle: {
-        width: 22,
-        height: 3,
-        backgroundColor: '#fff',
-        opacity: 0.4,
-        borderRadius: 0,
-    },
-    activeDotStyle: {
-        width: 22,
-        height: 3,
-        backgroundColor: '#fff',
-        borderRadius: 0,
-    },
-    Electricity:{
-        width:px(138),
-        height:px(57),
-        marginRight:px(66),
-    },
-    text:{
-        fontSize:px(24),
-        color:'#15172D',
-        marginRight: px(46),
-    },
-    text2:{
-        color:'#15172D',
-        fontSize:px(30)
-    },
-    navView:{
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingLeft:px(30)
-    },
-    nav:{
-        width:px(335),
-        height:px(150),
-        marginTop:px(30),
-        marginRight:px(20),
-        paddingTop:px(26),
-        paddingLeft: px(28)
-    },
-    nav_tit:{
-        fontSize:px(34),
-        color:'#FFFFFF'
-    },
-    nav_mess:{
-        fontSize:px(24),
-        color:'#FFFFFF',
-        marginTop:px(10),
-        width:px(429)
-    },
-    bottom:{
-        width:px(690),
-        height:px(150),
-        marginLeft:px(30),
-        marginTop: px(20),
-        paddingTop: px(20),
-        paddingLeft:px(28),
-        paddingBottom:px(22),
-        marginBottom: px(34),
-    },
-    line:{
-        width:px(8),
-        height:px(25),
-        backgroundColor:'#15172C',
-    },
-    title:{
-        fontSize:px(34),
-        color:'#15172C',
-        marginLeft:px(12),
-    },
-    td:{
-        color:'#B1B0B0',
-        fontSize:px(22),
-    },
-    longList:{
-        display:'flex',
-        alignItems:'center',
-        flexDirection:'row',
-        justifyContent:'space-between',
-        paddingRight:px(30)
-    },
-    border:{
-        borderBottomWidth:px(2),
-        borderBottomColor:'#E4E4E4',paddingBottom:px(17),paddingTop:px(15)
-    },
-    icon:{
-        width:px(53),
-        height:px(53),
-        marginLeft:px(30),
-        marginRight:px(28)
-    },
-    text1:{
-        color:'#333333',fontSize:px(30)
-    },
-    small:{
-        color:'#B1B0B0',fontSize:px(22)
-    },
-    item:{
-        width:px(230),
-    },
-    btn:{
-        width:px(186),
-        height:px(68),
-        textAlign:'center',
-        lineHeight:px(68),
-        fontSize:px(24),
-        color:'#FFFFFF'
-    },
-    line1:{
-      width:px(6),
-      height:px(39),
-      backgroundColor:'#59D134'
-    },
-    line2:{
-        width:px(6),
-        height:px(39),
-        backgroundColor:'#F8C743'
-    },
-    line3:{
-        width:px(6),
-        height:px(39),
-        backgroundColor:'#F84343'
-    }
-})
-
+import {StyleSheet} from 'react-native';
+import px from '@/util/adaptation';
+export default StyleSheet.create({
+  screen: {
+    backgroundColor: '#000000',
+    height: '100%',
+    width: '100%',
+    opacity: 0.8,
+  },
+  headerSearch: {
+    height: px(60),
+    width: '100%',
+    fontSize: px(28),
+    backgroundColor: '#333333',
+  },
+  plate: {
+    width: px(690),
+    marginTop: px(20),
+    marginBottom: px(8),
+    height: px(224),
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginLeft: px(30),
+    marginRight: px(30),
+  },
+  plateText: {
+    fontSize: px(28),
+    color: '#FFFFFF',
+    marginTop: px(24),
+    textAlign: 'center',
+  },
+  plateItem: {
+    width: px(224),
+    height: px(224),
+  },
+  status: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'row',
+    backgroundColor: '#333333',
+    height: px(50),
+  },
+  statusText: {
+    color: '#FFFFFF',
+    fontSize: px(24),
+    lineHeight: px(50),
+  },
+  statusText2: {
+    color: '#FFFFFF',
+    fontSize: px(26),
+    lineHeight: px(50),
+  },
+  first: {
+    marginLeft: px(30),
+    marginRight: px(29),
+  },
+  second: {
+    marginRight: px(21),
+  },
+  third: {
+    color: '#00D623',
+  },
+  appList: {
+    width: px(690),
+    marginLeft: px(30),
+    marginRight: px(30),
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    flexShrink: 0,
+    height: px(148),
+    alignContent: 'flex-start',
+  },
+  application: {
+    width: px(340),
+    height: px(140),
+    marginBottom: px(8),
+    position: 'relative',
+  },
+  appText: {
+    fontSize: px(26),
+    color: '#FFFFFF',
+    marginTop: px(41),
+    marginBottom: px(16),
+    marginLeft: px(20),
+  },
+  appMessage: {
+    fontSize: px(20),
+    color: '#FFFFFF',
+    marginLeft: px(20),
+  },
+  star: {
+    width: px(24),
+    height: px(24),
+    position: 'absolute',
+    right: px(18),
+    top: px(18),
+  },
+  select: {
+    width: px(30),
+    height: px(30),
+    position: 'absolute',
+    right: px(19),
+    bottom: px(18),
+  },
+});

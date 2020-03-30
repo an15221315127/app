@@ -69,10 +69,10 @@ export default class Photo extends React.Component<any, any> {
       });
     }
   }
-  touchEnd(e: any) {
+  touchMove(e: any) {
     // console.log('移动结束', e.nativeEvent.pageX);
     const {pageX} = e.nativeEvent;
-    if (this.state.pageX > 0 && pageX - this.state.pageX > 100) {
+    if (this.state.pageX > 0 && pageX - this.state.pageX > 50) {
       this.setState({
         isShow: true,
       });
@@ -120,7 +120,7 @@ export default class Photo extends React.Component<any, any> {
             <View
               style={styles.container}
               onTouchStart={this.toucnStart.bind(this)}
-              onTouchEnd={this.touchEnd.bind(this)}>
+              onTouchMove={this.touchMove.bind(this)}>
               <View style={styles.slide1}>
                 <View style={styles.header}>
                   <Text style={styles.headTit}>#一个标题话题</Text>

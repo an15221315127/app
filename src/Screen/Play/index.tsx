@@ -82,9 +82,9 @@ export default class Play extends React.Component<any, any> {
       pageX,
     });
   }
-  touchEnd(e: any) {
+  touchMove(e: any) {
     const {pageX} = e.nativeEvent;
-    if (this.state.pageX > 0 && this.state.pageX - pageX > 100) {
+    if (this.state.pageX > 0 && pageX - this.state.pageX > 50) {
       this.setState({
         isShow: true,
       });
@@ -140,8 +140,8 @@ export default class Play extends React.Component<any, any> {
     return (
       <Swiper
         onIndexChanged={index => this.changeIndex(index)}
-        onTouchStart={this.touchEnd.bind(this)}
-        onTouchEnd={this.touchStart.bind(this)}
+        onTouchStart={(e: any) => this.touchStart(e)}
+        onTouchMove={(e: any) => this.touchMove(e)}
         horizontal={false}
         showsPagination={false}
         showsButtons={false}>

@@ -4,6 +4,7 @@ import {Provider} from 'mobx-react';
 import store from '@/store';
 import {configure} from 'mobx';
 import {StatusBar} from 'react-native';
+
 import 'react-native-gesture-handler';
 configure({
   enforceActions: 'always',

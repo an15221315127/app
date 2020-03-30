@@ -1,6 +1,6 @@
 'use strict';
 import {Image} from 'react-native';
-import px from '@/util/adaptation';
+import {scaleSizeH, scaleSizeW} from '@/util/adaptation';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 
@@ -17,8 +17,8 @@ export function tab(focus: boolean, url: any, acturl: any) {
 
 const styles = StyleSheet.create({
   tab: {
-    width: px(40),
-    height: px(40),
-    paddingTop: px(10),
+    width: scaleSizeW(40),
+    height: scaleSizeH(40),
+    paddingTop: scaleSizeH(10),
   },
 });

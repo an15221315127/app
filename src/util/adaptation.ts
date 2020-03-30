@@ -1,15 +1,56 @@
-import {Dimensions, Platform, PixelRatio} from 'react-native';
+/**
+ * Created by qianxin on 17/6/1.
+ * 屏幕工具类
+ * ui设计基准,iphone 6
+ * width:750
+ * height:1334
+ */
 
-const deviceWidth = Dimensions.get('window').width;
+// 获取屏幕的dp
+import {Dimensions, PixelRatio} from 'react-native';
+let screenW = Dimensions.get('window').width;
+let screenH = Dimensions.get('window').height;
+let fontScale = PixelRatio.getFontScale();
+let pixelRatio = PixelRatio.get();
+// 高保真的宽度和告诉
+const designWidth = 750.0;
+const designHeight = 1334.0;
+
+// 根据dp获取屏幕的px
+let screenPxW = PixelRatio.getPixelSizeForLayoutSize(screenW);
+let screenPxH = PixelRatio.getPixelSizeForLayoutSize(screenH);
 
 /**
- * @author 安国栋
- * @param size
- * @return 当前窗口于设计图的比例缩放后的真实尺寸
+ * 设置text
+ * @param size  px
+ * @returns {Number} dp
  */
-export default function px(size: number) {
-  if (PixelRatio.get() >= 3 && Platform.OS === 'ios' && size === 1) {
-    return size;
-  }
-  return (deviceWidth / 750) * size;
+export function setSpText(size: number) {
+  var scaleWidth = screenW / designWidth;
+  var scaleHeight = screenH / designHeight;
+  var scale = Math.min(scaleWidth, scaleHeight);
+  size = Math.round((size * scale) / fontScale + 0.5);
+  return size;
+}
+
+/**
+ * 设置高度
+ * @param size  px
+ * @returns {Number} dp
+ */
+export function scaleSizeH(size: number) {
+  var scaleHeight = (size * screenPxH) / designHeight;
+  size = Math.round(scaleHeight / pixelRatio + 0.5);
+  return size;
+}
+
+/**
+ * 设置宽度
+ * @param size  px
+ * @returns {Number} dp
+ */
+export function scaleSizeW(size: number) {
+  var scaleWidth = (size * screenPxW) / designWidth;
+  size = Math.round(scaleWidth / pixelRatio + 0.5);
+  return size;
 }

@@ -1,56 +1,42 @@
 /**
- * Created by qianxin on 17/6/1.
- * 屏幕工具类
- * ui设计基准,iphone 6
- * width:750
- * height:1334
+ * React Native 适配工具类
+ * 以iPhone6为基准
  */
 
-// 获取屏幕的dp
 import {Dimensions, PixelRatio} from 'react-native';
-let screenW = Dimensions.get('window').width;
-let screenH = Dimensions.get('window').height;
-let fontScale = PixelRatio.getFontScale();
-let pixelRatio = PixelRatio.get();
-// 高保真的宽度和告诉
-const designWidth = 750.0;
-const designHeight = 1334.0;
 
-// 根据dp获取屏幕的px
-let screenPxW = PixelRatio.getPixelSizeForLayoutSize(screenW);
-let screenPxH = PixelRatio.getPixelSizeForLayoutSize(screenH);
+// iPhone6 尺寸
+const defaultDevice = {
+  width: 750,
+  height: 1334,
+};
+
+// 设备的宽
+const {width: deviceWidth} = Dimensions.get('window');
+
+// 字体大小缩放比例(Android下可设置字体大小)
+let fontScale = PixelRatio.getFontScale();
+
+// 获取缩放比例
+const scale = deviceWidth / defaultDevice.width;
 
 /**
  * 设置text
- * @param size  px
- * @returns {Number} dp
+ * 如Android设备下不需要根据系统设置做字体缩放，可全面使用ScaleSize
+ * @param {number} size
+ * @returns {number}
  */
-export function setSpText(size: number) {
-  var scaleWidth = screenW / designWidth;
-  var scaleHeight = screenH / designHeight;
-  var scale = Math.min(scaleWidth, scaleHeight);
-  size = Math.round((size * scale) / fontScale + 0.5);
+export const ScaleText = (size: number) => {
+  size = Math.round(size * scale * fontScale);
   return size;
-}
+};
 
 /**
- * 设置高度
- * @param size  px
- * @returns {Number} dp
+ * 设置size
+ * @param {number} size
+ * @returns {number}
  */
-export function scaleSizeH(size: number) {
-  var scaleHeight = (size * screenPxH) / designHeight;
-  size = Math.round(scaleHeight / pixelRatio + 0.5);
+export const ScaleSize = (size: number) => {
+  size = Math.round(size * scale);
   return size;
-}
-
-/**
- * 设置宽度
- * @param size  px
- * @returns {Number} dp
- */
-export function scaleSizeW(size: number) {
-  var scaleWidth = (size * screenPxW) / designWidth;
-  size = Math.round(scaleWidth / pixelRatio + 0.5);
-  return size;
-}
+};

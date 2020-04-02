@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {inject, observer} from 'mobx-react';
 import {Input} from 'react-native-elements';
-import {scaleSizeW, scaleSizeH, setSpText} from '@/util/adaptation';
+import {ScaleSize, ScaleText} from '@/util/adaptation';
 import {Avatar, Button} from 'react-native-elements';
 import Swiper from 'react-native-swiper';
 import styles from './style';
@@ -132,8 +132,8 @@ export default class Photo extends React.Component<any, any> {
                     <Image
                       style={{
                         ...styles.headIcon,
-                        marginLeft: scaleSizeW(34),
-                        marginRight: scaleSizeW(34),
+                        marginLeft: ScaleSize(34),
+                        marginRight: ScaleSize(34),
                       }}
                       source={require('@/assets/photo/quit.png')}
                     />
@@ -150,14 +150,14 @@ export default class Photo extends React.Component<any, any> {
                     style={{
                       ...styles.head,
                       position: 'absolute',
-                      top: scaleSizeH(100),
-                      left: scaleSizeW(530),
+                      top: ScaleSize(100),
+                      left: ScaleSize(530),
                     }}>
                     <Text style={styles.showMore}>展开全文</Text>
                     <Image
                       style={{
-                        width: setSpText(24),
-                        height: setSpText(13),
+                        width: ScaleText(24),
+                        height: ScaleText(13),
                         backgroundColor: 'transparent',
                       }}
                       source={require('@/assets/photo/down.png')}
@@ -183,7 +183,7 @@ export default class Photo extends React.Component<any, any> {
                   <Image
                     style={{
                       ...styles.open,
-                      left: isShow ? scaleSizeW(7) : scaleSizeW(-20),
+                      left: isShow ? ScaleSize(7) : ScaleSize(-20),
                     }}
                     source={require('@/assets/photo/open.png')}
                   />
@@ -195,9 +195,9 @@ export default class Photo extends React.Component<any, any> {
                           key={index}>
                           <Image
                             style={{
-                              width: setSpText(56),
-                              height: setSpText(56),
-                              marginRight: scaleSizeW(8),
+                              width: ScaleText(56),
+                              height: ScaleText(56),
+                              marginRight: ScaleSize(8),
                             }}
                             source={item.uri}
                           />
@@ -207,28 +207,33 @@ export default class Photo extends React.Component<any, any> {
                   </View>
                   <Avatar
                     containerStyle={styles.avatar}
-                    size={setSpText(72)}
+                    size={ScaleText(72)}
                     rounded
                     source={{uri: avatar}}
                   />
                   <View style={styles.controller}>
-                    <View style={{...styles.head, marginTop: scaleSizeH(14)}}>
+                    <View
+                      style={{
+                        ...styles.head,
+                        marginTop: ScaleSize(14),
+                        height: ScaleSize(40),
+                      }}>
                       <Image
                         style={{
-                          width: setSpText(18),
-                          height: setSpText(26),
-                          marginRight: scaleSizeW(21),
+                          width: ScaleText(18),
+                          height: ScaleText(26),
+                          marginRight: ScaleSize(21),
                         }}
                         source={require('@/assets/photo/location.png')}
                       />
-                      <Text style={{fontSize: setSpText(26), color: '#FFFFFF'}}>
+                      <Text style={{fontSize: ScaleText(26), color: '#FFFFFF'}}>
                         天空之城
                       </Text>
                       <Image
                         style={{
-                          width: setSpText(40),
-                          height: setSpText(36),
-                          marginRight: scaleSizeW(26),
+                          width: ScaleText(40),
+                          height: ScaleText(36),
+                          marginRight: ScaleSize(26),
                           alignSelf: 'flex-end',
                           marginLeft: 'auto',
                         }}
@@ -236,87 +241,95 @@ export default class Photo extends React.Component<any, any> {
                       />
                       <Image
                         style={{
-                          width: setSpText(40),
-                          height: setSpText(40),
-                          marginRight: scaleSizeW(30),
+                          width: ScaleText(40),
+                          height: ScaleText(40),
+                          marginRight: ScaleSize(30),
                         }}
                         source={require('@/assets/photo/icon_share.png')}
                       />
                     </View>
-                    <View style={{...styles.head, marginTop: scaleSizeH(26)}}>
+                    <View
+                      style={{
+                        ...styles.head,
+                        marginTop: ScaleSize(26),
+                        height: ScaleSize(46),
+                      }}>
                       <Avatar
-                        containerStyle={{marginRight: scaleSizeW(24)}}
+                        containerStyle={{marginRight: ScaleSize(24)}}
                         rounded
                         source={{uri: avatar}}
                       />
                       <View style={styles.comment}>
                         <Image
                           style={{
-                            width: setSpText(17),
-                            height: setSpText(20),
-                            marginLeft: scaleSizeW(10),
+                            width: ScaleText(17),
+                            height: ScaleText(20),
+                            marginLeft: ScaleSize(10),
                           }}
                           source={require('@/assets/photo/icon_fire.png')}
                         />
                         <Text
-                          style={{fontSize: setSpText(24), color: '#FF4646'}}>
+                          style={{fontSize: ScaleText(24), color: '#FF4646'}}>
                           神评
                         </Text>
                       </View>
                       <Text
                         numberOfLines={1}
                         style={{
-                          width: scaleSizeW(435),
-                          fontSize: setSpText(26),
+                          width: ScaleSize(435),
+                          fontSize: ScaleText(26),
                           color: '#FFFFFF',
                         }}>
                         往上滚动展示留言页往上滚动展示页帅哒哒哒哒
                       </Text>
                       <Image
                         style={{
-                          width: setSpText(30),
-                          height: setSpText(6),
-                          marginRight: scaleSizeW(30),
+                          width: ScaleText(30),
+                          height: ScaleText(6),
+                          marginRight: ScaleSize(30),
                           marginLeft: 'auto',
                         }}
                         source={require('@/assets/photo/icon_more.png')}
                       />
                     </View>
-                    <View style={{...styles.head, marginTop: scaleSizeH(26)}}>
+                    <View
+                      style={{
+                        ...styles.head,
+                        marginTop: ScaleSize(26),
+                        height: ScaleSize(48),
+                      }}>
                       <Avatar
-                        containerStyle={{marginRight: scaleSizeW(24)}}
+                        containerStyle={{marginRight: ScaleSize(24)}}
                         rounded
                         source={{uri: avatar}}
                       />
                       <Text
                         numberOfLines={1}
                         style={{
-                          width: scaleSizeW(435),
-                          fontSize: setSpText(26),
+                          width: ScaleSize(435),
+                          fontSize: ScaleText(26),
                           color: '#FFFFFF',
                         }}>
                         往上滚动展示留言页往上滚动展示页帅哒哒哒哒
                       </Text>
                       <Image
                         style={{
-                          width: setSpText(30),
-                          height: setSpText(6),
-                          marginRight: scaleSizeW(30),
+                          width: ScaleText(30),
+                          height: ScaleText(6),
+                          marginRight: ScaleSize(30),
                           marginLeft: 'auto',
                         }}
                         source={require('@/assets/photo/icon_more.png')}
                       />
                     </View>
-                    <View style={{...styles.head, marginTop: scaleSizeH(21)}}>
-                      <KeyboardAvoidingView
-                        style={styles.head}
-                        behavior="height">
+                    <KeyboardAvoidingView enabled={true} behavior="position">
+                      <View style={{...styles.head, marginTop: ScaleSize(20)}}>
                         <Input
                           containerStyle={{
-                            width: scaleSizeW(536),
-                            height: scaleSizeH(60),
+                            width: ScaleSize(536),
+                            height: ScaleSize(60),
                             borderColor: '#666666',
-                            borderWidth: scaleSizeW(2),
+                            borderWidth: ScaleSize(2),
                             display: 'flex',
                             alignItems: 'center',
                             flexDirection: 'row',
@@ -326,10 +339,10 @@ export default class Photo extends React.Component<any, any> {
                           leftIcon={
                             <Image
                               style={{
-                                width: setSpText(40),
-                                height: setSpText(31),
-                                marginLeft: scaleSizeW(14),
-                                marginRight: scaleSizeW(18),
+                                width: ScaleText(40),
+                                height: ScaleText(31),
+                                marginLeft: ScaleSize(14),
+                                marginRight: ScaleSize(18),
                               }}
                               source={require('@/assets/photo/icon_mess.png')}
                             />
@@ -346,19 +359,19 @@ export default class Photo extends React.Component<any, any> {
                           title="发送"
                           type="outline"
                           style={{
-                            width: scaleSizeW(120),
-                            height: scaleSizeH(60),
+                            width: ScaleSize(120),
+                            height: ScaleSize(60),
                             padding: 0,
                           }}
-                          titleStyle={{fontSize: setSpText(30)}}
+                          titleStyle={{fontSize: ScaleText(30)}}
                           buttonStyle={{
                             padding: 0,
-                            height: scaleSizeH(60),
-                            marginLeft: scaleSizeW(34),
+                            height: ScaleSize(60),
+                            marginLeft: ScaleSize(34),
                           }}
                         />
-                      </KeyboardAvoidingView>
-                    </View>
+                      </View>
+                    </KeyboardAvoidingView>
                   </View>
                 </ImageBackground>
               </View>

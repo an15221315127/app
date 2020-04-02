@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import {Longlist} from 'beeshell';
-import {setSpText,scaleSizeH,scaleSizeW} from "@/util/adaptation";
+import {ScaleSize, ScaleText} from '@/util/adaptation';
 import {Avatar} from 'react-native-elements';
 import {Input} from 'beeshell/dist/components/Input';
 import styles from './style';
@@ -146,8 +146,11 @@ export default class Home extends Component<any, any> {
         <View style={styles.plate}>
           <ImageBackground style={styles.plateItem} source={{uri: avatar}}>
             <Avatar
-              containerStyle={{marginLeft: scaleSizeW(52), marginTop: scaleSizeH(15)}}
-              size={setSpText(120)}
+              containerStyle={{
+                marginLeft: ScaleSize(52),
+                marginTop: ScaleSize(15),
+              }}
+              size={ScaleText(120)}
               rounded
               source={{uri: avatar}}
             />
@@ -158,11 +161,11 @@ export default class Home extends Component<any, any> {
             source={require('@/assets/home/plate2.png')}>
             <Image
               style={{
-                marginLeft: scaleSizeW(52),
+                marginLeft: ScaleSize(52),
                 marginTop: 15,
                 backgroundColor: 'transparent',
-                width: setSpText(120),
-                height: setSpText(120),
+                width: ScaleText(120),
+                height: ScaleText(120),
               }}
               source={require('@/assets/home/plate2_icon.png')}
             />
@@ -173,11 +176,11 @@ export default class Home extends Component<any, any> {
             source={require('@/assets/home/plate3.png')}>
             <Image
               style={{
-                marginLeft: scaleSizeW(52),
+                marginLeft: ScaleSize(52),
                 marginTop: 15,
                 backgroundColor: 'transparent',
-                width: setSpText(120),
-                height: setSpText(120),
+                width: ScaleText(120),
+                height: ScaleText(120),
               }}
               source={require('@/assets/home/plate3_icon.png')}
             />
@@ -201,8 +204,8 @@ export default class Home extends Component<any, any> {
             <Text
               style={{
                 ...styles.statusText2,
-                marginLeft: scaleSizeW(79),
-                marginRight: scaleSizeW(33),
+                marginLeft: ScaleSize(79),
+                marginRight: ScaleSize(33),
               }}>
               将
               <Text style={{...styles.statusText2, color: '#27B2F3'}}>
@@ -215,7 +218,7 @@ export default class Home extends Component<any, any> {
               style={{
                 ...styles.statusText,
                 color: '#00D623',
-                marginRight: scaleSizeW(8),
+                marginRight: ScaleSize(8),
               }}>
               确认
             </Text>
@@ -229,7 +232,7 @@ export default class Home extends Component<any, any> {
               style={{
                 ...styles.statusText,
                 color: '#8E8E8E',
-                marginLeft: scaleSizeW(8),
+                marginLeft: ScaleSize(8),
               }}>
               取消
             </Text>
@@ -237,11 +240,11 @@ export default class Home extends Component<any, any> {
         )}
         <Image
           style={{
-            width: setSpText(24),
-            height: setSpText(24),
-            marginLeft: scaleSizeW(30),
-            marginBottom: scaleSizeH(14),
-            marginTop: scaleSizeH(14),
+            width: ScaleText(24),
+            height: ScaleText(24),
+            marginLeft: ScaleSize(30),
+            marginBottom: ScaleSize(14),
+            marginTop: ScaleSize(14),
           }}
           source={require('@/assets/home/star.png')}
         />
@@ -256,7 +259,7 @@ export default class Home extends Component<any, any> {
               <Text
                 style={{
                   color: '#FFFFFF',
-                  fontSize: scaleSizeW(32),
+                  fontSize: ScaleSize(32),
                   textAlign: 'center',
                 }}>
                 {loading ? '正在加载' : '暂无更多'}
@@ -306,11 +309,11 @@ export default class Home extends Component<any, any> {
         />
         <Image
           style={{
-            width: setSpText(14),
-            height: setSpText(19),
-            marginLeft: scaleSizeW(30),
-            marginTop: scaleSizeH(14),
-            marginBottom: scaleSizeH(14),
+            width: ScaleText(14),
+            height: ScaleText(19),
+            marginLeft: ScaleSize(30),
+            marginTop: ScaleSize(14),
+            marginBottom: ScaleSize(14),
           }}
           source={require('@/assets/home/close.png')}
         />

@@ -16,7 +16,7 @@
     "@react-navigation/stack": "^5.2.8",
     "@types/react-native-elements": "^0.18.0",
     "@types/react-native-video": "^5.0.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "beeshell": "^2.0.11",
     "mobx": "^5.15.1",
     "mobx-react": "^6.1.4",
